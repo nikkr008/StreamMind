@@ -33,12 +33,16 @@ const screenConfigs = [
   {
     name: SCREEN_NAMES.LOGIN,
     component: LoginScreen,
-    options: getDefaultHeaderOptions('Movies Suggestions'),
+    options: {
+      headerShown: false,
+    },
   },
   {
     name: SCREEN_NAMES.SIGNUP,
     component: SignUp,
-    options: getDefaultHeaderOptions('Sign Up'),
+    options: {
+      headerShown: false,
+    },
   },
   {
     name: SCREEN_NAMES.FORGOT_PASSWORD,
