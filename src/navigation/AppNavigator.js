@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignUp from '../screens/auth/SignUp';
 import ForgotPassword from '../screens/auth/ForgotPassword';
@@ -30,6 +31,13 @@ const getDefaultHeaderOptions = (title) => ({
 });
 
 const screenConfigs = [
+  {
+    name: SCREEN_NAMES.SPLASH,
+    component: SplashScreen,
+    options: {
+      headerShown: false,
+    },
+  },
   {
     name: SCREEN_NAMES.LOGIN,
     component: LoginScreen,
@@ -81,7 +89,7 @@ const screenConfigs = [
 const AppNavigator = () => {
   return (
     <Stack.Navigator 
-      initialRouteName={SCREEN_NAMES.LOGIN}
+      initialRouteName={SCREEN_NAMES.SPLASH}
       screenOptions={{
         headerBackTitleVisible: false,
         animation: 'slide_from_right',

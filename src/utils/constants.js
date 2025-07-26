@@ -7,6 +7,7 @@ export const API_CONFIG = {
 
 // Navigation Screen Names
 export const SCREEN_NAMES = {
+  SPLASH: 'SplashScreen',
   LOGIN: 'LoginScreen',
   SIGNUP: 'SignUp',
   FORGOT_PASSWORD: 'ForgotPassword',
