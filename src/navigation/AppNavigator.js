@@ -6,7 +6,6 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import SignUp from '../screens/auth/SignUp';
 import ForgotPassword from '../screens/auth/ForgotPassword';
 import MovieDetails from '../screens/movie/movieDetails';
-// import MainScreen from '../services/apiList';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ProfileMenu from '../screens/profile/profileMenu';
 import Favourite from '../screens/movie/favourite';
@@ -31,32 +30,32 @@ const getDefaultHeaderOptions = (title) => ({
 });
 
 const screenConfigs = [
-  // {
-  //   name: SCREEN_NAMES.SPLASH,
-  //   component: SplashScreen,
-  //   options: {
-  //     headerShown: false,
-  //   },
-  // },
-  // {
-  //   name: SCREEN_NAMES.LOGIN,
-  //   component: LoginScreen,
-  //   options: {
-  //     headerShown: false,
-  //   },
-  // },
-  // {
-  //   name: SCREEN_NAMES.SIGNUP,
-  //   component: SignUp,
-  //   options: {
-  //     headerShown: false,
-  //   },
-  // },
-  // {
-  //   name: SCREEN_NAMES.FORGOT_PASSWORD,
-  //   component: ForgotPassword,
-  //   options: getDefaultHeaderOptions('Update Password'),
-  // },
+  {
+    name: SCREEN_NAMES.SPLASH,
+    component: SplashScreen,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: SCREEN_NAMES.LOGIN,
+    component: LoginScreen,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: SCREEN_NAMES.SIGNUP,
+    component: SignUp,
+    options: {
+      headerShown: false,
+    },
+  },
+  {
+    name: SCREEN_NAMES.FORGOT_PASSWORD,
+    component: ForgotPassword,
+    options: getDefaultHeaderOptions('Update Password'),
+  },
   {
     name: SCREEN_NAMES.MAIN_SCREEN,
     component: HomeScreen,
@@ -89,7 +88,7 @@ const screenConfigs = [
 const AppNavigator = () => {
   return (
     <Stack.Navigator 
-      initialRouteName={SCREEN_NAMES.HomeScreen}
+      initialRouteName={SCREEN_NAMES.SPLASH}
       screenOptions={{
         headerBackTitleVisible: false,
         animation: 'slide_from_right',
