@@ -6,11 +6,10 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import SignUp from '../screens/auth/SignUp';
 import ForgotPassword from '../screens/auth/ForgotPassword';
 import MovieDetails from '../screens/movie/movieDetails';
-import MainScreen from '../services/apiList';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ProfileMenu from '../screens/profile/profileMenu';
 import Favourite from '../screens/movie/favourite';
 import HelpCenter from '../screens/HelpCenter';
-
 import NavBar from '../components/common/NavBar';
 
 import { SCREEN_NAMES } from '../utils/constants';
@@ -59,8 +58,8 @@ const screenConfigs = [
   },
   {
     name: SCREEN_NAMES.MAIN_SCREEN,
-    component: MainScreen,
-    options: getDefaultHeaderOptions('Movie List'),
+    component: HomeScreen,
+    options: getDefaultHeaderOptions('HomeScreen'),
   },
   {
     name: SCREEN_NAMES.MOVIE_DETAILS,
