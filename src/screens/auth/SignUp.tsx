@@ -16,6 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { adjustedHeight, adjustedScale, adjustedWidth } from '../../utils/Dimensions';
 import { COLORS } from '../../styles/colors';
 import { TYPOGRAPHY } from '../../styles/typography';
+import { fetchData, setAuthToken } from '../../services/apiService';
 
 interface SignUpFormData {
   name: string;
@@ -146,21 +147,50 @@ const SignUpScreen = ({ navigation }: { navigation: any }) => {
     setIsLoading(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Prepare signup data
+      const signupData = {
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        mobileNumber: formData.mobileNumber.replace(/\s/g, ''),
+        dateOfBirth: formData.dateOfBirth,
+        gender: formData.gender,
+      };
+
+      // Call API using fetchData function
+      const response = await fetchData(signupData, '/api/auth/signup', 'POST');
       
-      Alert.alert(
-        'Success!',
-        'Account created successfully. You can now sign in.',
-        [
-          {
-            text: 'OK',
-            onPress: () => navigation.navigate('LoginScreen'),
-          },
-        ]
-      );
+      if (response.success) {
+        // If API returns a token, save it
+        if (response.data?.token) {
+          await setAuthToken(response.data.token);
+        }
+
+        Alert.alert(
+          'Success!',
+          'Account created successfully. You can now sign in.',
+          [
+            {
+              text: 'OK',
+              onPress: () => navigation.navigate('LoginScreen'),
+            },
+          ]
+        );
+      } else {
+        // Handle API errors
+        Alert.alert(
+          'Signup Failed',
+          response.error || 'Something went wrong. Please try again.',
+          [{ text: 'OK' }]
+        );
+      }
     } catch (error) {
-      Alert.alert('Error', 'Something went wrong. Please try again.');
+      // Handle unexpected errors
+      console.error('Signup error:', error);
+      Alert.alert(
+        'Error',
+        'An unexpected error occurred. Please check your connection and try again.',
+        [{ text: 'OK' }]
+      );
     } finally {
       setIsLoading(false);
     }
